@@ -85,7 +85,12 @@ public class CountlyFlutterPlugin implements MethodCallHandler, FlutterPlugin, A
             data.put("id", requestID);
         }
         log("notifyPublicChannelRCDL, downloaded values: " + downloadedValues + ", error: " + error + ", fullValueUpdate: " + fullValueUpdate + ", requestID: " + requestID, LogLevel.VERBOSE);
-        methodChannel.invokeMethod("remoteConfigDownloadCallback", data);
+
+        if (methodChannel != null) {
+            methodChannel.invokeMethod("remoteConfigDownloadCallback", data);
+        } else {
+            log("methodChannel is null in notifyPublicChannelRCDL", requestID: " + requestID, LogLevel.WARNING);
+        }
     }
 
     public final Map<String, Object> transformMapIntoSendableForm(Map<String, RCData> map) {
