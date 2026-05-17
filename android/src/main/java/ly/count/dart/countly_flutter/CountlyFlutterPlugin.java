@@ -89,7 +89,7 @@ public class CountlyFlutterPlugin implements MethodCallHandler, FlutterPlugin, A
         if (methodChannel != null) {
             methodChannel.invokeMethod("remoteConfigDownloadCallback", data);
         } else {
-            log("methodChannel is null in notifyPublicChannelRCDL", requestID: " + requestID, LogLevel.WARNING);
+            log("methodChannel is null in notifyPublicChannelRCDL", LogLevel.WARNING);
         }
     }
 
